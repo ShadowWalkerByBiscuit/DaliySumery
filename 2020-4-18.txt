@@ -1,0 +1,8 @@
+关于mysql真正删除的问题：
+delete如果包括where条件并不会直接删除（如果不包括where就直接删除），而是等待新的数据来填充空缺，把数据转化成碎片。
+如果需要直接删除的话可以通过truncate操作。
+show table status like 'table_name'可以查看相关数据。
+optimize table table_name 用于整合碎片。
+由于命令optimize会进行锁表操作，所以进行优化时要避开表数据操作时间，避免影响正常业务的进行。
+
+
